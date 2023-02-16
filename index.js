@@ -16,16 +16,13 @@ if (process.env.NODE_ENV !== 'test') {
 
 app.use(express.json());
 
-// Add a route
-app.get("/", (req, res) => {
-    const data = {
-        data: {
-            msg: "Hello World"
-        }
-    };
+// Routes
+const home = require('./api/routes/home');
+const employees = require('./api/routes/employees');
 
-    res.json(data);
-});
+// Add routes
+app.use('/', home);
+app.use('/employees', employees);
 
 app.listen(port, () => {
     console.info(`Personnel API listening at port ${port}`)
