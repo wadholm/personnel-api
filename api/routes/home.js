@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     const data = {
         data: {
-            msg: "Personnel API"
+            message: "Personnel API"
         }
     };
 
