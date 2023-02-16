@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require('cors');
 const morgan = require('morgan');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
+
+mongoose.set('strictQuery', true);
 
 const app = express();
 const port = 1337;
@@ -24,9 +26,33 @@ const employees = require('./api/routes/employees');
 app.use('/', home);
 app.use('/employees', employees);
 
-app.listen(port, () => {
-    console.info(`Personnel API listening at port ${port}`)
-});
+
+// Connect Mongoose
+let dsn;
+
+// Test db
+if (process.env.NODE_ENV === 'test') {
+    dsn = process.env.DSN_TEST || "mongodb://127.0.0.1:27017/test";
+} else {
+    dsn = process.env.DSN || "mongodb://127.0.0.1:27017/employees";
+}
+
+mongoose.connect(
+    dsn,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+)
+// Start up server
+    .then(() => {
+        app.listen(port, () => {
+            console.log(`Personnel API listening on port ${port}!`);
+        });
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 app.use((req, res, next) => {
     const err = new Error("Not Found");
