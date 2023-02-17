@@ -6,7 +6,6 @@ services:
             dockerfile: Dockerfile
         environment:
             - DSN=mongodb://mongodb:27017/employees
-            - DSN_TEST=mongodb://mongodb:27017/test
         volumes:
             - ./:/app/
             - /app/node_modules/
@@ -14,7 +13,20 @@ services:
             - 1337:1337
         links:
             - mongodb
-        command: "npm run prod"
+        command: "npm start"
+
+    test:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            - DSN_TEST=mongodb://mongodb:27017/test
+        volumes:
+            - ./:/app/
+            - /app/node_modules/
+        links:
+            - mongodb
+        command: "npm run test"
 
     mongodb:
         image: mongo
@@ -24,4 +36,4 @@ services:
             - ./data/db:/data/db
         ports:
             - 27017:27017
-        command: mongod
+        command: mongod --quiet --logpath /dev/null
