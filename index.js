@@ -23,8 +23,8 @@ const home = require('./api/routes/home');
 const employees = require('./api/routes/employees');
 
 // Add routes
-app.use('/', home);
-app.use('/employees', employees);
+app.use('/api/v1/', home);
+app.use('/api/v1/employees', employees);
 
 
 // Connect Mongoose
@@ -43,15 +43,15 @@ mongoose.connect(
         useNewUrlParser: true,
         useUnifiedTopology: true,
     }
-)
+    )
 // Start up server
     .then(() => {
         app.listen(port, () => {
-            console.log(`Personnel API listening on port ${port}!`);
+            console.info(`Personnel API listening on port ${port}!`);
         });
     })
     .catch((err) => {
-        console.log(err);
+        console.error(err);
     });
 
 app.use((req, res, next) => {

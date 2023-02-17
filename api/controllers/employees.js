@@ -22,7 +22,7 @@ exports.get_all_employees = (req, res) => {
         });
 };
 
-exports.add_employee = (req, res) => {
+exports.create_employee = (req, res) => {
     Employee.find({ email: req.body.email })
         .exec()
         // eslint-disable-next-line consistent-return
@@ -48,8 +48,8 @@ exports.add_employee = (req, res) => {
             newEmployee.save()
                 .then(result => {
                     res.status(201).json({
-                        message: "Succesfully added an employee",
-                        addedEmployee: {
+                        message: "Succesfully created an employee",
+                        createdEmployee: {
                             firstname: result.firstname,
                             lastname: result.lastname,
                             email: result.email
