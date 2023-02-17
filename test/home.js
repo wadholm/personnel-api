@@ -16,8 +16,8 @@ describe('Home', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.an("object");
-                    res.body.should.have.property("message");
-                    res.body.message.should.equal("Personnel API");
+                    res.body.should.have.property("title");
+                    res.body.title.should.equal("Personnel API");
                     done();
                 });
         });
