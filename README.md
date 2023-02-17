@@ -3,7 +3,7 @@
 API for customer X's personnel register.
 
 
-## Run server locally
+## Run API locally
 Clone the repository to get a clean install.
 
 To install all prerequisites needed for this application, run:
@@ -18,14 +18,14 @@ In the project directory, you can run:
 npm start
 ```
 
-Runs the app in the development mode.
+Runs the server in the development mode.
 Open [http://localhost:1337/api/v1](http://localhost:1337/api/v1) to view it in the browser.
 
 ```
 npm run prod
 ```
 
-Runs the app in the production mode.
+Runs the server in the production mode.
 
 ```
 npm run test
@@ -33,7 +33,7 @@ npm run test
 
 Runs the test suite.
 
-## Run server with Docker
+## Run API with Docker
 Clone the repository to get a clean install.
 
 ```
