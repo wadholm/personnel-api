@@ -2,13 +2,6 @@
 
 API for customer X's personnel register.
 
-## Installation
-
-To install all prerequisites needed for this application, run:
-
-```shell
-npm install
-```
 
 ## Run server locally
 Clone the repository to get a clean install.
