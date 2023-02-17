@@ -74,3 +74,5 @@ app.use((err, req, res, next) => {
         ]
     });
 });
+
+exports.server = app;

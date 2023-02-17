@@ -29,7 +29,7 @@ exports.create_employee = (req, res) => {
         .then(employee => {
             if (!req.body.email) {
                 return res.status(401).json({
-                    message: `Email missing${  req.body.email}`
+                    message: `Email missing`
                 });
             }
             if (employee.length >= 1) {
