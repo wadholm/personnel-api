@@ -1,8 +1,8 @@
 # Personnel API
 
-RESTful API for client X's personnel records, returns JSON.
+RESTful API for client X's personnel records.
 
-The API is built with JavaScript, Node.js and Express, and uses MongoDB as a database. 
+The API is built with JavaScript, Node.js and Express, uses MongoDB as a database and returns JSON.
 
 The API consist of three operations where one can:
 1. Add a new employee
@@ -13,6 +13,7 @@ The API consist of three operations where one can:
 When adding a new employee, a **first name**, **last name**, and **unique email address** are required.
 
 ## Run API locally
+Open [http://localhost:1337/api/v1](http://localhost:1337/api/v1) to view it in the browser.
 
 Clone the repository to get a clean install.
 
@@ -33,7 +34,6 @@ npm start
 ```
 
 Runs the server in development mode.
-Open [http://localhost:1337/api/v1](http://localhost:1337/api/v1) to view it in the browser.
 
 ```
 npm run prod
@@ -48,14 +48,14 @@ npm run test
 Runs the test suite.
 
 ## Run API with Docker
+Open [http://localhost:1337/api/v1](http://localhost:1337/api/v1) to view it in the browser.
+
 Clone the repository to get a clean install.
 
 ```
 docker-compose up
 ```
 Starts database without logs, starts the server and runs test suite. 
-
-Open [http://localhost:1337/api/v1](http://localhost:1337/api/v1) to view it in the browser.
 
 ```
 docker-compose up mongodb express
@@ -77,6 +77,17 @@ Close down the docker containers, shuts down database and the server.
 ## REST-API documentation
 
 Documentation on how to use the Personnel API. 
+
+Example API response: 
+```
+$ curl http://localhost:1337/api/v1
+
+{
+	"title": "Personnel API",
+	"message": "Manual on how to use the API is found: https://github.com/wadholm/personnel-api/tree/dev#readme"
+}
+```
+
 
 ### employee
 
