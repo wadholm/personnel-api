@@ -1,35 +1,50 @@
 const express = require("express");
 const cors = require('cors');
 const morgan = require('morgan');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
+
+mongoose.set('strictQuery', true);
 
 const app = express();
 const port = 1337;
 
 app.use(cors());
 
-// don't show the log when it is test
 if (process.env.NODE_ENV !== 'test') {
-    // use morgan to log at command line
-    app.use(morgan('combined')); // 'combined' outputs the Apache style LOGs
+    app.use(morgan('combined'));
 }
 
 app.use(express.json());
 
-// Add a route
-app.get("/", (req, res) => {
-    const data = {
-        data: {
-            msg: "Hello World"
-        }
-    };
+const home = require('./api/routes/home');
+const employees = require('./api/routes/employees');
 
-    res.json(data);
-});
+app.use('/api/v1/', home);
+app.use('/api/v1/employees', employees);
 
-app.listen(port, () => {
-    console.info(`Personnel API listening at port ${port}`)
-});
+let dsn;
+
+if (process.env.NODE_ENV === 'test') {
+    dsn = process.env.DSN_TEST || "mongodb://127.0.0.1:27017/test";
+} else {
+    dsn = process.env.DSN || "mongodb://127.0.0.1:27017/employees";
+}
+
+mongoose.connect(
+    dsn,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+    )
+    .then(() => {
+        app.listen(port, () => {
+            console.info(`Personnel API listening on port ${port}!`);
+        });
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 
 app.use((req, res, next) => {
     const err = new Error("Not Found");
@@ -51,3 +66,5 @@ app.use((err, req, res, next) => {
         ]
     });
 });
+
+exports.server = app;
