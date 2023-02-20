@@ -15,7 +15,6 @@ exports.get_all_employees = (req, res) => {
             res.status(200).json(response);
         })
         .catch(err => {
-            // console.error(err);
             res.status(500).json({
                 error: err
             });
@@ -57,7 +56,6 @@ exports.create_employee = (req, res) => {
                     });
                 })
                 .catch(err => {
-                    // console.error(err);
                     res.status(500).json({
                         error: err
                     });
@@ -79,7 +77,6 @@ exports.delete_employee = (req, res) => {
             });
         })
         .catch(err => {
-            console.error(err);
             res.status(500).json({
                 error: err
             });

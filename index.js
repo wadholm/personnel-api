@@ -10,27 +10,20 @@ const port = 1337;
 
 app.use(cors());
 
-// don't show the log when it is test
 if (process.env.NODE_ENV !== 'test') {
-    // use morgan to log at command line
-    app.use(morgan('combined')); // 'combined' outputs the Apache style LOGs
+    app.use(morgan('combined'));
 }
 
 app.use(express.json());
 
-// Routes
 const home = require('./api/routes/home');
 const employees = require('./api/routes/employees');
 
-// Add routes
 app.use('/api/v1/', home);
 app.use('/api/v1/employees', employees);
 
-
-// Connect Mongoose
 let dsn;
 
-// Test db
 if (process.env.NODE_ENV === 'test') {
     dsn = process.env.DSN_TEST || "mongodb://127.0.0.1:27017/test";
 } else {
@@ -44,7 +37,6 @@ mongoose.connect(
         useUnifiedTopology: true,
     }
     )
-// Start up server
     .then(() => {
         app.listen(port, () => {
             console.info(`Personnel API listening on port ${port}!`);

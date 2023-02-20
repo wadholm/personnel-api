@@ -63,7 +63,7 @@ describe('Employees model', () => {
                     done();
                 });
         });
-        it('should get 500 for required fields missing', (done) => {
+        it('should get 500 for required field is missing', (done) => {
             employee.email = "new@example.com";
             delete employee.firstname;
 
