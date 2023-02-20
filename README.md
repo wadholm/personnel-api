@@ -55,7 +55,7 @@ Clone the repository to get a clean install.
 ```
 docker-compose up
 ```
-Starts database without logs, starts the server and runs test suite. 
+Starts database without logs, starts the server and runs the test suite.
 
 ```
 docker-compose up mongodb express
