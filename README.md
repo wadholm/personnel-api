@@ -78,7 +78,7 @@ Close down the docker containers, shuts down database and the server.
 
 Documentation on how to use the Personnel API. 
 
-Example API response: 
+#### Example API response: 
 ```
 $ curl http://localhost:1337/api/v1
 
