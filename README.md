@@ -145,9 +145,9 @@ The email address needs to be unique.
 #### Example body, in JSON:
 ```
 {
-    "firstname": "Irene",
-    "lastname":  "Adler",
-    "email": "the@woman.com"
+    "firstname": "Mycroft",
+    "lastname":  "Holmes",
+    "email": "holmes@mi6.co.uk"
 }
 ```
 
@@ -156,9 +156,9 @@ The email address needs to be unique.
 {
     "message": "Succesfully created an employee",
     "createdEmployee": {
-        "firstname": "Irene",
-        "lastname": "Adler",
-        "email": "the@woman.com"
+        "firstname": "Mycroft",
+        "lastname": "Holmes",
+        "email": "holmes@mi6.co.uk"
     }
 }
 ```
